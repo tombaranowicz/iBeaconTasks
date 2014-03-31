@@ -1,0 +1,37 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "Utils.h"
+#endif
+
+#ifdef DEBUG
+#define DLOG(format, ...)  NSLog(format, ##__VA_ARGS__)
+#define DETAIL_LOG(format, ...)	 NSLog((@"%@ [Line %d] " format), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define POINT_LOG(name, point)  NSLog(@"%@ : %@", name, NSStringFromCGPoint(point))
+#define SIZE_LOG(name, size)  NSLog(@"%@ : %@", name, NSStringFromCGSize(size))
+#define RECT_LOG(name, rect)  NSLog(@"%@ : %@", name, NSStringFromCGRect(rect))
+#define TRACE(format, ...)  NSLog([NSString stringWithFormat:@"%@.%@:%@",[self class],NSStringFromSelector(_cmd),format], ##__VA_ARGS__)
+#else
+#define DLOG(format, ...)
+#define DETAIL_LOG(format, ...)
+#define POINT_LOG(name, point)
+#define SIZE_LOG(name, size)
+#define RECT_LOG(name, rect)
+#define TRACE(format, ...)
+#endif
+
+#define SYNC_FINISHED_NOTIFICATION @"syncFinishedNotification"
+#define LOCATION_CHANGED_NOTIFICATION @"locationChangedNotification"
+#define TASK_MAXLENGTH 160
